@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,28 +11,54 @@
     </data>
 
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@color/whiskey"
         app:cardCornerRadius="8dp"
-        app:cardUseCompatPadding="true"
-        android:layout_height="wrap_content">
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/engText"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{word.eng}"
+                android:layout_marginEnd="12dp"
+                android:textColor="@color/off_yellow"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/wordProgress"
+                app:layout_constraintEnd_toStartOf="@id/statusImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Eng title" />
+
+            <ImageView
+                android:id="@+id/statusImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_time_forward"
+                app:layout_constraintBottom_toBottomOf="@+id/engText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/engText"
+                app:tint="@color/off_yellow" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/wordProgress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="4"
+                android:layout_marginTop="8dp"
+                android:progress="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/engText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

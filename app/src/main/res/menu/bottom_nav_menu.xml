@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/main_navigation"
-        android:icon="@android:drawable/alert_dark_frame"
+        android:icon="@drawable/ic_menu"
         android:title="Home" />
     <item android:id="@+id/statistic_navigation"
-        android:icon="@android:drawable/alert_dark_frame"
+        android:icon="@drawable/ic_heart"
         android:title="Favorite"/>
 </menu>
