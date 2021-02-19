@@ -1,6 +1,5 @@
 package com.nikasov.intervalrepeatingmethod.ui.fragment.main
 
-import com.nikasov.intervalrepeatingmethod.data.room.entity.word.WordEntity
 import com.nikasov.intervalrepeatingmethod.repository.WordRepository
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

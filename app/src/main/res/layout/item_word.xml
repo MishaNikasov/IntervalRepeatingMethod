@@ -51,6 +51,9 @@
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/wordProgress"
                 android:layout_width="0dp"
+                app:trackCornerRadius="4dp"
+                app:trackColor="@color/off_yellow"
+                app:indicatorColor="@color/green"
                 android:layout_height="wrap_content"
                 android:max="4"
                 android:layout_marginTop="8dp"
