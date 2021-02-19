@@ -55,7 +55,7 @@ class MainFragment : BaseFragment() {
 
     private fun loadData() {
         viewModel.wordList.observe(viewLifecycleOwner, {
-            wordAdapter.submitList(viewModel.getWordList(it))
+            wordAdapter.submitList(it)
         })
     }
 

@@ -1,10 +1,14 @@
 package com.nikasov.intervalrepeatingmethod.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.data.mapper.WordMapper
 import com.nikasov.intervalrepeatingmethod.data.room.entity.word.WordDao
 import com.nikasov.intervalrepeatingmethod.data.room.entity.word.WordEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class WordRepository @Inject constructor(
@@ -12,7 +16,5 @@ class WordRepository @Inject constructor(
     private val wordMapper: WordMapper
 ) {
     suspend fun insertWord(word: Word) { wordDao.insertWord(wordMapper.mapToEntity(word)) }
-    fun readAllWords(): LiveData<List<WordEntity>> = wordDao.readAllWords()
-
-    fun getWordList(list: List<WordEntity>) = wordMapper.mapFromEntityList(list)
+    fun readAllWords(): LiveData<List<Word>> = Transformations.map(wordDao.readAllWords()) { list -> return@map wordMapper.mapFromEntityList(list) }
 }

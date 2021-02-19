@@ -13,6 +13,4 @@ class MainViewModel @Inject constructor(
 
     val wordList = wordRepository.readAllWords()
 
-    fun getWordList(list: List<WordEntity>) = wordRepository.getWordList(list)
-
 }
