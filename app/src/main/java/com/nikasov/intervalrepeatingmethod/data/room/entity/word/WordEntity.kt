@@ -11,6 +11,8 @@ data class WordEntity (
     val eng: String,
     val rus: String,
     val createDate: Long,
-    val repeatDate: Long,
-    val state: Int
+    val repeatDate: Long? = null,
+    val state: Int,
+    val isActive: Boolean,
+    val isFavorite: Boolean = false
 )

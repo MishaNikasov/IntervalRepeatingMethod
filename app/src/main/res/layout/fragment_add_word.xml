@@ -17,7 +17,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/off_yellow"
+        android:background="@color/romance"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="Впишите слово"
-            android:textColor="@color/whiskey"
+            android:textColor="@color/black"
             android:textSize="21sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/engText"
@@ -87,7 +87,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:textColor="@color/white"
             android:text="Добавить"
+            app:backgroundTint="@color/pumpkin"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/rusText"

@@ -9,15 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.nikasov.intervalrepeatingmethod.R
+import com.nikasov.intervalrepeatingmethod.common.extentions.hideKeyBoard
+import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentMainBinding
-import com.nikasov.intervalrepeatingmethod.ui.adapter.WordAdapter
+import com.nikasov.intervalrepeatingmethod.ui.adapter.recycler.WordAdapter
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(), WordAdapter.Interaction {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by viewModels()
@@ -39,15 +41,16 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().hideKeyBoard()
         setupUi()
         setupState()
         loadData()
     }
 
     private fun setupUi() {
-        binding.wordRecycler.apply {
-            adapter = wordAdapter
-        }
+        wordAdapter.interaction = this@MainFragment
+        binding.wordRecycler.adapter = wordAdapter
+
         binding.addWordBtn.setOnClickListener {
             findNavController().navigate(R.id.mainFragmentToAddWordFragment)
         }
@@ -66,5 +69,13 @@ class MainFragment : BaseFragment() {
 
             }
         }
+    }
+
+    override fun onItemSelected(position: Int, item: Word) {
+
+    }
+
+    override fun deleteWord(id: Int) {
+        viewModel.deleteWordById(id)
     }
 }

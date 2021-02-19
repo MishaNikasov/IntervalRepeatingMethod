@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/main_navigation"
+        android:id="@+id/navigation_carousel"
+        android:icon="@drawable/ic_menu"
+        android:title="Repeat" />
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/ic_menu"
+        android:title="Add" />
+    <item
+        android:id="@+id/navigation_main"
         android:icon="@drawable/ic_menu"
         android:title="Home" />
-    <item android:id="@+id/statistic_navigation"
+    <item android:id="@+id/navigation_statistic"
         android:icon="@drawable/ic_heart"
         android:title="Favorite"/>
 </menu>

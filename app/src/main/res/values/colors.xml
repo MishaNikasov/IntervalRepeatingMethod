@@ -8,9 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="off_yellow">#FEFAE0</color>
-    <color name="champagne">#FAEDCD</color>
-    <color name="whiskey">#D4A373</color>
-    <color name="green">#CAD473</color>
+    <color name="romance">#fefefe</color>
+    <color name="athens_gray">#efeff4</color>
+    <color name="emerald">#4dc478</color>
+    <color name="red">#C44D4D</color>
+    <color name="pumpkin">#ff6a21</color>
 
 </resources>

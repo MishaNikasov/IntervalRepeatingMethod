@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_carousel"
+    app:startDestination="@id/carouselFragment">
+
+    <fragment
+        android:id="@+id/carouselFragment"
+        tools:layout="@layout/fragment_carousel"
+        android:name="com.nikasov.intervalrepeatingmethod.ui.fragment.carousel.CarouselFragment"
+        android:label="CarouselFragment" />
+</navigation>

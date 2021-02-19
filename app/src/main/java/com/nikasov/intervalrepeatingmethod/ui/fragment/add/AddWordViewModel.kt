@@ -29,7 +29,8 @@ class AddWordViewModel @Inject constructor(
             val word = Word(
                 eng = engWord.value ?: "",
                 rus = rusWord.value ?: "",
-                createDate = Calendar.getInstance()
+                createDate = Calendar.getInstance(),
+                isActive = true
             )
             wordRepository.insertWord(word)
             _uiState.value = UiState.Loading(false)

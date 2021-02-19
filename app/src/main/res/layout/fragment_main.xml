@@ -9,7 +9,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/off_yellow"
+        android:background="@color/athens_gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             app:useCompatPadding="true"
             app:tint="@color/white"
-            app:backgroundTint="@color/whiskey"
+            app:backgroundTint="@color/pumpkin"
             app:srcCompat="@drawable/ic_plus_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

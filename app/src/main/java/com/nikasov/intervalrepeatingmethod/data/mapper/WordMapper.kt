@@ -12,33 +12,42 @@ class WordMapper @Inject constructor(): EntityMapper<WordEntity, Word> {
             id = entity.id,
             eng = entity.eng,
             rus = entity.rus,
-            createDate = calendarFromTimestamp(entity.createDate),
+            createDate = calendarFromTimestamp(entity.createDate) ?: Calendar.getInstance(),
             repeatDate = calendarFromTimestamp(entity.repeatDate),
-            state = getStateFromId(entity.state)
+            state = getStateFromId(entity.state),
+            isActive = entity.isActive,
+            isFavorite = entity.isFavorite
         )
     }
     override fun mapToEntity(domainModel: Word): WordEntity {
         return WordEntity(
             eng = domainModel.eng,
             rus = domainModel.rus,
-            createDate = dateToTimestamp(domainModel.createDate),
+            createDate = dateToTimestamp(domainModel.createDate) ?: 0,
             repeatDate = dateToTimestamp(domainModel.repeatDate),
-            state = getIdState(domainModel.state)
+            state = getIdState(domainModel.state),
+            isActive = domainModel.isActive,
+            isFavorite = domainModel.isFavorite
         )
     }
 
 
-    private fun calendarFromTimestamp(value: Long): Calendar {
-        val cal: Calendar = GregorianCalendar()
-        cal.timeInMillis = value * 1000
-        return cal
+    private fun calendarFromTimestamp(value: Long?): Calendar? {
+        return if (value == null)
+            null
+        else {
+            val cal: Calendar = GregorianCalendar()
+            cal.timeInMillis = value * 1000
+            cal
+        }
     }
 
-    private fun dateToTimestamp(cal: Calendar?): Long {
-        cal?.let {
+    private fun dateToTimestamp(cal: Calendar?): Long? {
+        return if (cal == null)
+            null
+        else {
             return cal.timeInMillis / 1000
         }
-        return -1
     }
 
     private fun getStateFromId(id: Int): WordState {

@@ -8,7 +8,9 @@ data class Word (
     val rus: String,
     val createDate: Calendar,
     val repeatDate: Calendar? = null,
-    val state: WordState = WordState.DEFAULT
+    val state: WordState = WordState.DEFAULT,
+    val isActive: Boolean,
+    val isFavorite: Boolean = false
 )
 
 enum class WordState(val id: Int) {

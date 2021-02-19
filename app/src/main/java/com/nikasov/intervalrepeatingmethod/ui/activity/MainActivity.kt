@@ -31,8 +31,10 @@ class MainActivity : BaseActivity() {
 
     private fun setupBottomNavigationBar() {
         val navGraphIds = listOf(
+            R.navigation.navigation_carousel,
+            R.navigation.navigation_add,
             R.navigation.navigation_main,
-            R.navigation.statistic_navigation
+            R.navigation.navigation_statistic
         )
         val controller = binding.bottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,

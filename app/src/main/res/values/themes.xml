@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.IntervalRepeatingMethod" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/whiskey</item>
-        <item name="colorPrimaryVariant">@color/champagne</item>
-        <item name="colorOnPrimary">@color/off_yellow</item>
+        <item name="colorPrimary">@color/emerald</item>
+        <item name="colorPrimaryVariant">@color/athens_gray</item>
+        <item name="colorOnPrimary">@color/romance</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#e9edc9</item>
         <item name="colorSecondaryVariant">#ccd5ae</item>

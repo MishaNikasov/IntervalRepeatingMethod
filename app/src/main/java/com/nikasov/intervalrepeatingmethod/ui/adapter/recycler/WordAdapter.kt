@@ -1,18 +1,20 @@
-package com.nikasov.intervalrepeatingmethod.ui.adapter
+package com.nikasov.intervalrepeatingmethod.ui.adapter.recycler
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import com.nikasov.intervalrepeatingmethod.R
+import com.nikasov.intervalrepeatingmethod.common.extentions.showPopUpMenu
 import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.databinding.ItemWordBinding
 import javax.inject.Inject
 
 class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val interaction: Interaction? = null
+    var interaction: Interaction? = null
 
     private val callback = object : DiffUtil.ItemCallback<Word>() {
 
@@ -54,15 +56,34 @@ class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
         private val binding: ItemWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Word) = with(itemView) {
-            itemView.setOnClickListener {
-                interaction?.onItemSelected(bindingAdapterPosition, item)
+        fun bind(word: Word) = with(itemView) {
+            itemView.setOnClickListener { interaction?.onItemSelected(bindingAdapterPosition, word) }
+
+            val popupClickListener = PopupMenu.OnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.delete_word -> {
+                        word.id?.let { id ->
+                            interaction?.deleteWord(id)
+                        }
+                        true
+                    }
+                    else -> true
+
+                }
             }
-            binding.word = item
+
+            binding.wordCardRoot.setOnLongClickListener {
+                it.showPopUpMenu(R.menu.word_popup_menu, popupClickListener)
+                return@setOnLongClickListener true
+            }
+            binding.word = word
         }
+
     }
+
 
     interface Interaction {
         fun onItemSelected(position: Int, item: Word)
+        fun deleteWord(id: Int)
     }
 }

@@ -16,5 +16,11 @@ class WordRepository @Inject constructor(
     private val wordMapper: WordMapper
 ) {
     suspend fun insertWord(word: Word) { wordDao.insertWord(wordMapper.mapToEntity(word)) }
-    fun readAllWords(): LiveData<List<Word>> = Transformations.map(wordDao.readAllWords()) { list -> return@map wordMapper.mapFromEntityList(list) }
+    suspend fun deleteWordById(id: Int) { wordDao.deleteWordById(id) }
+    fun readAllWords(): LiveData<List<Word>> = Transformations.map(wordDao.readAllWords()) {
+            list -> return@map wordMapper.mapFromEntityList(list)
+    }
+    fun readAllUncompletedWords(): LiveData<List<Word>> = Transformations.map(wordDao.readAllUncompletedWords()) {
+            list -> return@map wordMapper.mapFromEntityList(list)
+    }
 }
