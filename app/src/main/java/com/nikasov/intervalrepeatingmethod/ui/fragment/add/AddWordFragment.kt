@@ -54,7 +54,7 @@ class AddWordFragment : BaseFragment(){
             viewModel.uiState.collect { state ->
                 when (state) {
                     is UiState.Loading -> binding.inProgress = state.inProgress
-                    is UiState.Successes -> requireActivity().onBackPressed()
+//                    is UiState.Successes -> requireActivity().onBackPressed()
                 }
             }
         }

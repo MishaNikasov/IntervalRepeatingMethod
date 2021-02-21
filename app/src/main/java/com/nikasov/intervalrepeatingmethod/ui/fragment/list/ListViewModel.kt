@@ -1,4 +1,4 @@
-package com.nikasov.intervalrepeatingmethod.ui.fragment.main
+package com.nikasov.intervalrepeatingmethod.ui.fragment.list
 
 import androidx.lifecycle.viewModelScope
 import com.nikasov.intervalrepeatingmethod.repository.WordRepository
@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class ListViewModel @Inject constructor(
     private val wordRepository: WordRepository
 ) : BaseViewModel() {
 

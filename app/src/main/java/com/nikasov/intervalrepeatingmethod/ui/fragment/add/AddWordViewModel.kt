@@ -4,13 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nikasov.intervalrepeatingmethod.common.util.UiState
 import com.nikasov.intervalrepeatingmethod.data.domain.Word
-import com.nikasov.intervalrepeatingmethod.data.domain.WordState
 import com.nikasov.intervalrepeatingmethod.repository.WordRepository
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -29,8 +26,7 @@ class AddWordViewModel @Inject constructor(
             val word = Word(
                 eng = engWord.value ?: "",
                 rus = rusWord.value ?: "",
-                createDate = Calendar.getInstance(),
-                isActive = true
+                createDate = Calendar.getInstance()
             )
             wordRepository.insertWord(word)
             _uiState.value = UiState.Loading(false)

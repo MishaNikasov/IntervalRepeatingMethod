@@ -11,3 +11,10 @@ fun TextView.setDateText(value: Date?) {
         text = value.getFormatTime()
     }
 }
+@BindingAdapter("failText")
+fun TextView.setFailText(count: Int?) {
+    count?.let {
+        val failCountText = "Ошибок: $count"
+        text = failCountText
+    }
+}

@@ -4,7 +4,7 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -17,9 +17,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/romance"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/athens_gray">
 
         <TextView
             android:id="@+id/text"
@@ -60,13 +60,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/rusText"
-            android:layout_marginTop="8dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
-            app:layout_constraintBottom_toTopOf="@id/btn"
+            app:layout_constraintBottom_toTopOf="@id/checkBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,16 +81,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:clickable="@{inProgress == true ? false : true}"
-            android:id="@+id/btn"
-            android:onClick="@{() -> viewModel.insertWord()}"
+            android:id="@+id/checkBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textColor="@color/white"
+            android:clickable="@{inProgress == true ? false : true}"
+            android:onClick="@{() -> viewModel.insertWord()}"
             android:text="Добавить"
-            app:backgroundTint="@color/pumpkin"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/pumpkin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/rusText"
             app:layout_constraintStart_toStartOf="@+id/rusText"
@@ -98,10 +98,10 @@
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressIndicator"
-            android:visibility="@{inProgress == true ? View.VISIBLE : View.GONE, default = gone}"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="@{inProgress == true ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

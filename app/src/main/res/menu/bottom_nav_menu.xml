@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_carousel"
-        android:icon="@drawable/ic_menu"
+        android:icon="@drawable/ic_text"
         android:title="Repeat" />
     <item
         android:id="@+id/navigation_add"
-        android:icon="@drawable/ic_menu"
+        android:icon="@drawable/ic_add"
         android:title="Add" />
     <item
         android:id="@+id/navigation_main"

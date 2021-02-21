@@ -54,14 +54,20 @@ class CarouselAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(word: Word) = with(itemView) {
-            binding.root.setOnClickListener {
-                interaction?.onItemSelected(bindingAdapterPosition, word)
-            }
             binding.word = word
+            binding.checkBtn.setOnClickListener {
+                if (word.rus == binding.rusEditText.text.toString()) {
+                    binding.status = true
+                    interaction?.setResult(word, true)
+                } else {
+                    binding.status = false
+                    interaction?.setResult(word, false)
+                }
+            }
         }
     }
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: Word)
+        fun setResult(word: Word, isCompleted: Boolean)
     }
 }

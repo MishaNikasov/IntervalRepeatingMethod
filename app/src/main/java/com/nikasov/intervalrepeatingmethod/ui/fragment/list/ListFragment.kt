@@ -1,4 +1,4 @@
-package com.nikasov.intervalrepeatingmethod.ui.fragment.main
+package com.nikasov.intervalrepeatingmethod.ui.fragment.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.common.extentions.hideKeyBoard
 import com.nikasov.intervalrepeatingmethod.data.domain.Word
-import com.nikasov.intervalrepeatingmethod.databinding.FragmentMainBinding
+import com.nikasov.intervalrepeatingmethod.databinding.FragmentListBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.recycler.WordAdapter
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,10 +19,10 @@ import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment(), WordAdapter.Interaction {
+class ListFragment : BaseFragment(), WordAdapter.Interaction {
 
-    private lateinit var binding: FragmentMainBinding
-    private val viewModel: MainViewModel by viewModels()
+    private lateinit var binding: FragmentListBinding
+    private val viewModel: ListViewModel by viewModels()
 
     @Inject
     lateinit var wordAdapter: WordAdapter
@@ -32,7 +32,7 @@ class MainFragment : BaseFragment(), WordAdapter.Interaction {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         return binding.root
@@ -48,12 +48,8 @@ class MainFragment : BaseFragment(), WordAdapter.Interaction {
     }
 
     private fun setupUi() {
-        wordAdapter.interaction = this@MainFragment
+        wordAdapter.interaction = this@ListFragment
         binding.wordRecycler.adapter = wordAdapter
-
-        binding.addWordBtn.setOnClickListener {
-            findNavController().navigate(R.id.mainFragmentToAddWordFragment)
-        }
     }
 
     private fun loadData() {

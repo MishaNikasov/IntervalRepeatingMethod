@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.nikasov.intervalrepeatingmethod.R
+import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentCarouselBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.pager.CarouselAdapter
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CarouselFragment : BaseFragment(){
+class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
 
     private lateinit var binding: FragmentCarouselBinding
     private val viewModel: CarouselViewModel by viewModels()
@@ -43,12 +47,20 @@ class CarouselFragment : BaseFragment(){
     }
 
     private fun setupViewModelCallbacks() {
-        viewModel.uncompletedWords.observe(viewLifecycleOwner, {
-            carouselAdapter.submitList(it)
-        })
+        viewModel.apply {
+            uncompletedWords.observe(viewLifecycleOwner, {
+                carouselAdapter.submitList(it)
+            })
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUncompletedWords()
     }
 
     private fun setupUi() {
+        carouselAdapter.interaction = this@CarouselFragment
         binding.carouselPager.adapter = carouselAdapter
 
         binding.carouselPager.offscreenPageLimit = 3
@@ -57,5 +69,9 @@ class CarouselFragment : BaseFragment(){
 
     private fun setupState() {
 
+    }
+
+    override fun setResult(word: Word, isCompleted: Boolean) {
+        viewModel.setResult(word, isCompleted)
     }
 }

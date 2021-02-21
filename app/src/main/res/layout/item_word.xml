@@ -36,10 +36,24 @@
                 android:text="@{word.eng}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/wordProgress"
+                app:layout_constraintBottom_toTopOf="@+id/failText"
                 app:layout_constraintEnd_toStartOf="@+id/nextRepetitionDate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:text="Eng title" />
+
+            <TextView
+                android:id="@+id/failText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:failText="@{word.failCount}"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toTopOf="@id/wordProgress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/engText"
+                android:textSize="12sp"
                 tools:text="Eng title" />
 
             <TextView
@@ -71,12 +85,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:max="4"
-                android:progress="2"
+                android:progress="@{word.repeatCount}"
+                tools:progress="2"
                 app:indicatorColor="@color/emerald"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/engText"
+                app:layout_constraintTop_toBottomOf="@+id/failText"
                 app:trackColor="@color/athens_gray"
                 app:trackCornerRadius="@dimen/corner_radius" />
 

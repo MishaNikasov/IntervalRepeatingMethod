@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/mainFragment2"
-        android:name="com.nikasov.intervalrepeatingmethod.ui.fragment.main.MainFragment"
+        android:name="com.nikasov.intervalrepeatingmethod.ui.fragment.list.ListFragment"
         android:label="MainFragment" />
 </navigation>
