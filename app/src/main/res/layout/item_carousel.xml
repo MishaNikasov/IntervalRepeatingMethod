@@ -68,7 +68,7 @@
                     android:id="@+id/rusEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="RUS" />
+                    android:hint="Перевод" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,6 +79,7 @@
                 android:layout_marginBottom="14dp"
                 android:text="Проверить"
                 android:textAllCaps="false"
+                android:letterSpacing="0"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/pumpkin"
                 app:layout_constraintBottom_toBottomOf="parent"

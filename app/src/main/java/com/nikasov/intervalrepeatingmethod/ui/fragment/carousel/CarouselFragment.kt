@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentCarouselBinding
@@ -42,13 +43,13 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
         super.onViewCreated(view, savedInstanceState)
 
         setupViewModelCallbacks()
-        setupState()
         setupUi()
     }
 
     private fun setupViewModelCallbacks() {
         viewModel.apply {
             uncompletedWords.observe(viewLifecycleOwner, {
+                binding.count = it.size
                 carouselAdapter.submitList(it)
             })
         }
@@ -61,17 +62,35 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
 
     private fun setupUi() {
         carouselAdapter.interaction = this@CarouselFragment
-        binding.carouselPager.adapter = carouselAdapter
+        binding.carouselPager.apply {
+            adapter = carouselAdapter
+            offscreenPageLimit = 3
+            isUserInputEnabled = false
+            setPageTransformer(MarginPageTransformer(3))
 
-        binding.carouselPager.offscreenPageLimit = 3
-        binding.carouselPager.setPageTransformer(MarginPageTransformer(3))
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    binding.progress = position
+                }
+            })
+        }
     }
 
-    private fun setupState() {
-
+    private fun goToNextWord() {
+        if (binding.carouselPager.currentItem != carouselAdapter.itemCount - 1)
+            binding.carouselPager.currentItem = binding.carouselPager.currentItem + 1
+        else {
+            binding.isComplete = true
+            binding.progress = carouselAdapter.itemCount
+        }
     }
 
     override fun setResult(word: Word, isCompleted: Boolean) {
         viewModel.setResult(word, isCompleted)
+        lifecycleScope.launch {
+            delay(1500)
+            goToNextWord()
+        }
     }
 }

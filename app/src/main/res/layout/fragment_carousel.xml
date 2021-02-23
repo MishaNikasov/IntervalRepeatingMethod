@@ -1,22 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.nikasov.intervalrepeatingmethod.ui.fragment.carousel.CarouselViewModel" />
+
+        <variable
+            name="count"
+            type="Integer" />
+
+        <variable
+            name="progress"
+            type="Integer" />
+
+        <variable
+            name="isComplete"
+            type="Boolean" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/athens_gray">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/carouselPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/counter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:carouselCount="@{count}"
+            app:carouselProgress="@{progress}"
+            app:layout_constraintBottom_toTopOf="@+id/carouselProgress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carouselPager" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/carouselProgress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="@{count}"
+            app:animateProgress="@{progress}"
+            app:indicatorColor="@color/pumpkin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/counter"
+            app:showAnimationBehavior="inward"
+            app:trackColor="@color/athens_gray"
+            app:trackCornerRadius="@dimen/corner_radius" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

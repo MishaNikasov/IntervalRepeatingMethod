@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "145386908483",
+    "project_id": "interval-english",
+    "storage_bucket": "interval-english.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145386908483:android:d9de1affdb29c288489df6",
+        "android_client_info": {
+          "package_name": "com.nikasov.intervalrepeatingmethod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145386908483-1lf5kbpq0p64r2r92lggmi59uqmo3sa6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikasov.intervalrepeatingmethod",
+            "certificate_hash": "084c58e7a08aa9129853b9276cc786d262ca8319"
+          }
+        },
+        {
+          "client_id": "145386908483-ope1rt5qao4om611bqi8mcfft1nkgk3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhV9UMLTr84fMW_wJG0LxzNHWnb8T7pfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145386908483-ope1rt5qao4om611bqi8mcfft1nkgk3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

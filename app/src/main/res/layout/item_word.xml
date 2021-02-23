@@ -49,7 +49,7 @@
                 android:layout_marginEnd="12dp"
                 app:failText="@{word.failCount}"
                 android:textColor="@color/grey"
-                app:layout_constraintBottom_toTopOf="@id/wordProgress"
+                app:layout_constraintBottom_toTopOf="@id/carouselProgress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/engText"
@@ -80,7 +80,7 @@
                 app:tint="@color/emerald" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/wordProgress"
+                android:id="@+id/carouselProgress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
