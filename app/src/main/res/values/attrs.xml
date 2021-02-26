@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="step_progress_attribute">
+        <attr name="max_progress" format="integer" />
+        <attr name="progress" format="integer" />
+        <attr name="placeholder_color" format="reference" />
+        <attr name="progress_color" format="reference" />
+    </declare-styleable>
+</resources>

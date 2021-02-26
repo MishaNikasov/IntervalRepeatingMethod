@@ -65,7 +65,7 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
         binding.carouselPager.apply {
             adapter = carouselAdapter
             offscreenPageLimit = 3
-            isUserInputEnabled = false
+//            isUserInputEnabled = false
             setPageTransformer(MarginPageTransformer(3))
 
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -75,6 +75,7 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
                 }
             })
         }
+        binding.carouselStepProgress.setViewPager(binding.carouselPager)
     }
 
     private fun goToNextWord() {
