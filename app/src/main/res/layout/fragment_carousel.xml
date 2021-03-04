@@ -45,27 +45,32 @@
             android:layout_marginTop="7dp"
             android:layout_marginBottom="7dp"
             android:textColor="@color/black"
+            tools:text="132/14"
             android:textSize="14sp"
             app:carouselCount="@{count}"
             app:carouselProgress="@{progress}"
-            app:layout_constraintBottom_toTopOf="@+id/carouselStepProgress"
+            app:layout_constraintBottom_toTopOf="@+id/carouselProgress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/carouselPager" />
 
-        <com.nikasov.intervalrepeatingmethod.ui.cusom.StepProgress
-            android:id="@+id/carouselStepProgress"
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/carouselProgress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:clipToPadding="false"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:max="@{count}"
+            app:animateProgress="@{progress}"
+            app:indicatorColor="@color/pumpkin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/counter"
-            app:placeholder_color="@color/romance"
-            tools:max_progress="4"
+            app:showAnimationBehavior="inward"
+            app:trackColor="@color/romance"
+            app:trackCornerRadius="@dimen/corner_radius"
+            tools:max="5"
             tools:progress="3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

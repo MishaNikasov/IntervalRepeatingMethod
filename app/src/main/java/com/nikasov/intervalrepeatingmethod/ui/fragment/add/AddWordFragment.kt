@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.common.util.UiState
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentAddWordBinding
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint

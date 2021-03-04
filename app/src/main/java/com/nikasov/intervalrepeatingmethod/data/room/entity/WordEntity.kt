@@ -1,4 +1,4 @@
-package com.nikasov.intervalrepeatingmethod.data.room.entity.word
+package com.nikasov.intervalrepeatingmethod.data.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

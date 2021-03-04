@@ -3,7 +3,7 @@ package com.nikasov.intervalrepeatingmethod.ui.fragment.add
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nikasov.intervalrepeatingmethod.common.util.UiState
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.repository.WordRepository
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ class AddWordViewModel @Inject constructor(
     fun insertWord() {
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = UiState.Loading(true)
-            val word = Word(
+            val word = WordModel(
                 eng = engWord.value ?: "",
                 rus = rusWord.value ?: "",
                 createDate = Calendar.getInstance()

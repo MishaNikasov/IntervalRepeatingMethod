@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.nikasov.intervalrepeatingmethod.R
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentCarouselBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.pager.CarouselAdapter
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
@@ -50,7 +50,7 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
         viewModel.apply {
             uncompletedWords.observe(viewLifecycleOwner, {
                 binding.count = it.size
-                carouselAdapter.submitList(it)
+                carouselAdapter.items = it
             })
         }
     }
@@ -75,7 +75,6 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
                 }
             })
         }
-        binding.carouselStepProgress.setViewPager(binding.carouselPager)
     }
 
     private fun goToNextWord() {
@@ -87,8 +86,8 @@ class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
         }
     }
 
-    override fun setResult(word: Word, isCompleted: Boolean) {
-        viewModel.setResult(word, isCompleted)
+    override fun setResult(wordModel: WordModel, isCompleted: Boolean) {
+        viewModel.setResult(wordModel, isCompleted)
         lifecycleScope.launch {
             delay(1500)
             goToNextWord()

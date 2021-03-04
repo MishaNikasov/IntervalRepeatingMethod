@@ -2,7 +2,7 @@ package com.nikasov.intervalrepeatingmethod.ui.fragment.carousel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.repository.WordRepository
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ class CarouselViewModel @Inject constructor(
 
     private val currentDate = Calendar.getInstance()
 
-    val uncompletedWords = MutableLiveData<List<Word>>()
+    val uncompletedWords = MutableLiveData<List<WordModel>>()
     val isCompleted = MutableLiveData<Boolean>()
 
     fun getUncompletedWords() {
@@ -28,14 +28,14 @@ class CarouselViewModel @Inject constructor(
         }
     }
 
-    fun setResult(word: Word, isCompleted: Boolean) {
+    fun setResult(wordModel: WordModel, isCompleted: Boolean) {
         if (isCompleted) {
             viewModelScope.launch(Dispatchers.IO) {
-                wordRepository.wordCorrect(word.id ?: -1, calculateRepeatDate(word.repeatCount))
+                wordRepository.wordCorrect(wordModel.id ?: -1, calculateRepeatDate(wordModel.repeatCount))
             }
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                wordRepository.wordFailed(word.id ?: -1, calculateRepeatDate(0))
+                wordRepository.wordFailed(wordModel.id ?: -1, calculateRepeatDate(0))
             }
         }
     }

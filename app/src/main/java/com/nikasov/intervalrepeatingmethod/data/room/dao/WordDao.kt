@@ -1,8 +1,8 @@
-package com.nikasov.intervalrepeatingmethod.data.room.entity.word
+package com.nikasov.intervalrepeatingmethod.data.room.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
+import com.nikasov.intervalrepeatingmethod.data.room.entity.WordEntity
 
 @Dao
 interface WordDao {

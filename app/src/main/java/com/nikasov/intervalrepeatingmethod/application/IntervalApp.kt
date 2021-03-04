@@ -1,4 +1,4 @@
-package com.nikasov.intervalrepeatingmethod.common
+package com.nikasov.intervalrepeatingmethod.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

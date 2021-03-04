@@ -1,4 +1,4 @@
-package com.nikasov.intervalrepeatingmethod.ui.cusom
+package com.nikasov.intervalrepeatingmethod.ui.widget
 
 import android.annotation.SuppressLint
 import android.content.Context

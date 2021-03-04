@@ -1,8 +1,8 @@
-package com.nikasov.intervalrepeatingmethod.data.domain
+package com.nikasov.intervalrepeatingmethod.ui.entity
 
 import java.util.*
-
-data class Word (
+//TODO: network, database, domain models name
+data class WordModel (
     val id: Int? = null,
     val eng: String,
     val rus: String,

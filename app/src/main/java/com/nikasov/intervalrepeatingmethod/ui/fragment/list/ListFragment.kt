@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.common.extentions.hideKeyBoard
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentListBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.recycler.WordAdapter
 import com.nikasov.intervalrepeatingmethod.ui.base.BaseFragment
@@ -67,7 +66,7 @@ class ListFragment : BaseFragment(), WordAdapter.Interaction {
         }
     }
 
-    override fun onItemSelected(position: Int, item: Word) {
+    override fun onItemSelected(position: Int, item: WordModel) {
 
     }
 

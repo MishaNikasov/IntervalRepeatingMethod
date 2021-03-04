@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.common.extentions.showPopUpMenu
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.databinding.ItemWordBinding
 import javax.inject.Inject
 
@@ -16,13 +16,13 @@ class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
 
     var interaction: Interaction? = null
 
-    private val callback = object : DiffUtil.ItemCallback<Word>() {
+    private val callback = object : DiffUtil.ItemCallback<WordModel>() {
 
-        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
+        override fun areItemsTheSame(oldItem: WordModel, newItem: WordModel): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean {
+        override fun areContentsTheSame(oldItem: WordModel, newItem: WordModel): Boolean {
             return oldItem == newItem
         }
     }
@@ -48,7 +48,7 @@ class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
         return differ.currentList.size
     }
 
-    fun submitList(list: List<Word>) {
+    fun submitList(list: List<WordModel>) {
         differ.submitList(list)
     }
 
@@ -56,13 +56,13 @@ class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
         private val binding: ItemWordBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(word: Word) = with(itemView) {
-            itemView.setOnClickListener { interaction?.onItemSelected(bindingAdapterPosition, word) }
+        fun bind(wordModel: WordModel) = with(itemView) {
+            itemView.setOnClickListener { interaction?.onItemSelected(bindingAdapterPosition, wordModel) }
 
             val popupClickListener = PopupMenu.OnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.delete_word -> {
-                        word.id?.let { id ->
+                        wordModel.id?.let { id ->
                             interaction?.deleteWord(id)
                         }
                         true
@@ -76,14 +76,14 @@ class WordAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
                 it.showPopUpMenu(R.menu.word_popup_menu, popupClickListener)
                 return@setOnLongClickListener true
             }
-            binding.word = word
+            binding.word = wordModel
         }
 
     }
 
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: Word)
+        fun onItemSelected(position: Int, item: WordModel)
         fun deleteWord(id: Int)
     }
 }

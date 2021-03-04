@@ -1,13 +1,13 @@
 package com.nikasov.intervalrepeatingmethod.data.mapper
 
-import com.nikasov.intervalrepeatingmethod.data.domain.Word
-import com.nikasov.intervalrepeatingmethod.data.room.entity.word.WordEntity
+import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
+import com.nikasov.intervalrepeatingmethod.data.room.entity.WordEntity
 import java.util.*
 import javax.inject.Inject
 
-class WordMapper @Inject constructor() : EntityMapper<WordEntity, Word> {
-    override fun mapFromEntity(entity: WordEntity): Word {
-        return Word(
+class WordMapper @Inject constructor() : EntityMapper<WordEntity, WordModel> {
+    override fun mapFromEntity(entity: WordEntity): WordModel {
+        return WordModel(
             id = entity.id,
             eng = entity.eng,
             rus = entity.rus,
@@ -21,7 +21,7 @@ class WordMapper @Inject constructor() : EntityMapper<WordEntity, Word> {
         )
     }
 
-    override fun mapToEntity(domainModel: Word): WordEntity {
+    override fun mapToEntity(domainModel: WordModel): WordEntity {
         return WordEntity(
             eng = domainModel.eng,
             rus = domainModel.rus,

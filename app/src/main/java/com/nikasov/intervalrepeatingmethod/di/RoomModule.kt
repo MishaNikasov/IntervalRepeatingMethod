@@ -3,7 +3,7 @@ package com.nikasov.intervalrepeatingmethod.di
 import android.content.Context
 import androidx.room.Room
 import com.nikasov.intervalrepeatingmethod.data.room.WordDatabase
-import com.nikasov.intervalrepeatingmethod.data.room.entity.word.WordDao
+import com.nikasov.intervalrepeatingmethod.data.room.dao.WordDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
