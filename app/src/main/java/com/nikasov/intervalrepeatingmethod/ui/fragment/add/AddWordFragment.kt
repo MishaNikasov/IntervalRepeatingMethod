@@ -16,9 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class AddWordFragment : BaseFragment(){
+class AddWordFragment : BaseFragment<FragmentAddWordBinding>(){
 
-    private lateinit var binding: FragmentAddWordBinding
     private val viewModel: AddWordViewModel by viewModels()
 
     override fun onCreateView(
