@@ -56,8 +56,7 @@ abstract class BaseAdapter<Model, ItemBinding : ViewDataBinding>(val context: Co
         }
     }
 
-    inner class BaseViewHolder(val binding: ItemBinding) :
-        RecyclerView.ViewHolder((binding as ViewDataBinding).root)
+    inner class BaseViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     protected abstract fun bind(binding: ItemBinding, model: Model, position: Int)
 
