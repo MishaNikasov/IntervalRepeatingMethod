@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.nikasov.intervalrepeatingmethod.R
+import androidx.lifecycle.observe
 import com.nikasov.intervalrepeatingmethod.common.extentions.hideKeyBoard
 import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
 import com.nikasov.intervalrepeatingmethod.databinding.FragmentListBinding
@@ -18,9 +19,8 @@ import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ListFragment : BaseFragment(), WordAdapter.Interaction {
+class ListFragment : BaseFragment<FragmentListBinding>(), WordAdapter.Interaction {
 
-    private lateinit var binding: FragmentListBinding
     private val viewModel: ListViewModel by viewModels()
 
     @Inject
@@ -52,9 +52,9 @@ class ListFragment : BaseFragment(), WordAdapter.Interaction {
     }
 
     private fun loadData() {
-        viewModel.wordList.observe(viewLifecycleOwner, {
-            wordAdapter.submitList(it)
-        })
+        viewModel.wordList.observe(viewLifecycleOwner) {
+            wordAdapter.items = it
+        }
     }
 
 

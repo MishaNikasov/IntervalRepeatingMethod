@@ -1,6 +1,5 @@
 package com.nikasov.intervalrepeatingmethod.ui.adapter.pager
 
-import android.content.Context
 import androidx.recyclerview.widget.AsyncListDiffer
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.ui.entity.WordModel
@@ -8,8 +7,7 @@ import com.nikasov.intervalrepeatingmethod.databinding.ItemCarouselBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.base.BaseAdapter
 import javax.inject.Inject
 
-class CarouselAdapter @Inject constructor(context: Context) :
-    BaseAdapter<WordModel, ItemCarouselBinding>(context) {
+class CarouselAdapter @Inject constructor() : BaseAdapter<WordModel, ItemCarouselBinding>() {
 
     override var differ = AsyncListDiffer(this, callback)
     override var layoutId = R.layout.item_carousel

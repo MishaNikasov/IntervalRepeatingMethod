@@ -1,6 +1,5 @@
 package com.nikasov.intervalrepeatingmethod.ui.adapter.base
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,10 +7,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import com.nikasov.intervalrepeatingmethod.R
 
-abstract class BaseAdapter<Model, ItemBinding : ViewDataBinding>(val context: Context) :
-    RecyclerView.Adapter<BaseAdapter<Model, ItemBinding>.BaseViewHolder>() {
+abstract class BaseAdapter<Model, ItemBinding : ViewDataBinding>: RecyclerView.Adapter<BaseAdapter<Model, ItemBinding>.BaseViewHolder>() {
 
     protected abstract var differ: AsyncListDiffer<Model>
     protected abstract var layoutId: Int
@@ -42,9 +39,9 @@ abstract class BaseAdapter<Model, ItemBinding : ViewDataBinding>(val context: Co
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return BaseViewHolder(
             DataBindingUtil.inflate(
-                LayoutInflater.from(context),
-                R.layout.fragment_add_word,
-                null,
+                LayoutInflater.from(parent.context),
+                layoutId,
+                parent,
                 false
             )
         )

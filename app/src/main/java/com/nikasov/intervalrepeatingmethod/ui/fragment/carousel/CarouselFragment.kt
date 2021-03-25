@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.nikasov.intervalrepeatingmethod.R
@@ -20,9 +21,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CarouselFragment : BaseFragment(), CarouselAdapter.Interaction {
+class CarouselFragment : BaseFragment<FragmentCarouselBinding>(), CarouselAdapter.Interaction {
 
-    private lateinit var binding: FragmentCarouselBinding
     private val viewModel: CarouselViewModel by viewModels()
 
     @Inject

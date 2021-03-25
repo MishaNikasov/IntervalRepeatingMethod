@@ -1,6 +1,5 @@
 package com.nikasov.intervalrepeatingmethod.ui.adapter.recycler
 
-import android.content.Context
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.AsyncListDiffer
 import com.nikasov.intervalrepeatingmethod.R
@@ -10,7 +9,7 @@ import com.nikasov.intervalrepeatingmethod.databinding.ItemWordBinding
 import com.nikasov.intervalrepeatingmethod.ui.adapter.base.BaseAdapter
 import javax.inject.Inject
 
-class WordAdapter @Inject constructor(context: Context) : BaseAdapter<WordModel, ItemWordBinding>(context) {
+class WordAdapter @Inject constructor() : BaseAdapter<WordModel, ItemWordBinding>() {
 
     var interaction: Interaction? = null
 
@@ -39,7 +38,6 @@ class WordAdapter @Inject constructor(context: Context) : BaseAdapter<WordModel,
 
         binding.word = model
     }
-
 
     interface Interaction {
         fun onItemSelected(position: Int, item: WordModel)

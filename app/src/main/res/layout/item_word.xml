@@ -10,7 +10,6 @@
             type="com.nikasov.intervalrepeatingmethod.ui.entity.WordModel" />
     </data>
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/wordCardRoot"
         android:layout_width="match_parent"

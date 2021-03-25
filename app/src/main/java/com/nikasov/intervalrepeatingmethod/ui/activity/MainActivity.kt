@@ -3,6 +3,7 @@ package com.nikasov.intervalrepeatingmethod.ui.activity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.nikasov.intervalrepeatingmethod.R
 import com.nikasov.intervalrepeatingmethod.common.extentions.setupWithNavController
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity() {
             intent = intent
         )
 
-        controller.observe(this, {
+        controller.observe(this, Observer {
 
         })
 
